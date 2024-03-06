@@ -1,5 +1,6 @@
-<form (submit)="onSubmit()" [formGroup]="form" class="centered-container">
+<form (submit)="onSubmit()" [formGroup]="form">
+    <h1> Join a Chat Room </h1>
     <input type="text" placeholder="Username" formControlName="username">
     <input type="text" placeholder="Chat Room" formControlName="chatroom">
-    <button type="submit"> Join Room</button>
+    <button type="submit"> Join Room </button>
 </form>
