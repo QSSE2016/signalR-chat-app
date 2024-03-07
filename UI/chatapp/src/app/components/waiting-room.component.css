@@ -1,8 +1,12 @@
+:host {
+    --main-color: 170deg,50%,50%;
+}
+
 form {
     position: absolute;
     width: 500px;
     height: 350px;
-    background-color: hsl(200,70%,50%,.2);
+    background-color: hsla(var(--main-color),.2);
     border-radius: .3em;
     left: 50%;
     top: 50%;
@@ -12,26 +16,37 @@ form {
     align-items: center;
     justify-content: center;
     gap: 1rem;
-    box-shadow: 0 0 2px 0 white;
+    box-shadow: 0 0 2px 0 hsl(var(--main-color));
 }
 
 h1 {
     color: white;
+    text-shadow: 0 0 5px hsl(var(--main-color));
 }
 
 form > input {
     padding: 1em;
     border-radius: .3em;
+    background-color: hsl(var(--main-color),.05);
     border: none;
+    border: 1px solid hsl(var(--main-color));
+    color: white;
+}
+
+form > input:focus {
+    outline: none;
 }
 
 form > button {
     padding: 1em 2em;
     border: none;
     border-radius: .3em;
+    background-color: hsl(var(--main-color),.05);
+    border: 1px solid hsl(var(--main-color));
+    color: white;
 }
 
 form > button:hover {
-    background-color: rgba(180,180,180);
+    background-color: hsl(var(--main-color),.3);
     cursor: pointer;
 }
