@@ -1,12 +1,20 @@
 using SignalRChatAPI.Hubs;
 
 var builder = WebApplication.CreateBuilder(args);
-
-// Add services to the container.
-// Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
+// CORS configuration (obviously you should think about cors in a serious project, here i'm just going to allow everything on my angular app port)
+builder.Services.AddCors(options =>
+{
+    options.AddPolicy("angApp", builder =>
+    {
+        builder.WithOrigins("http://localhost:4200").AllowAnyHeader().AllowAnyMethod().AllowCredentials();
+    });
+});
+
+
+// SignalR config
 builder.Services.AddSignalR();
 
 var app = builder.Build();
@@ -20,7 +28,11 @@ if (app.Environment.IsDevelopment())
 
 app.UseHttpsRedirection();
 
+
 app.MapHub<ChatHub>("chat-hub");
+
+// Actually use CORS settings (don't forget)
+app.UseCors("angApp");
 
 app.Run();
 
