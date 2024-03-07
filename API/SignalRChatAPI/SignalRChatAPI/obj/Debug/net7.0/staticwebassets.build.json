@@ -1,0 +1,11 @@
+{
+  "Version": 1,
+  "Hash": "YT+4IbsoPfk6Mq5MWMPY/K3C0SqVlo6KkkPwD12akFo=",
+  "Source": "SignalRChatAPI",
+  "BasePath": "_content/SignalRChatAPI",
+  "Mode": "Default",
+  "ManifestType": "Build",
+  "ReferencedProjectsConfiguration": [],
+  "DiscoveryPatterns": [],
+  "Assets": []
+}
