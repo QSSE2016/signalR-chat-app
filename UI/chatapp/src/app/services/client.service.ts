@@ -6,10 +6,14 @@ import { HubConnection, HubConnectionBuilder, LogLevel } from '@microsoft/signal
 })
 export class ClientService {
 
+  // Change these to your needs (for example, your port is most likely different, ASP .NET Core pretty much always picks a new port for every solution i think)
+  port = 7102
+  url = 'https://localhost'
+  hubRouteName = 'chat-hub'
+
   constructor() { }
 
-
   buildConnection() : HubConnection {
-    return new HubConnectionBuilder().withUrl("chat-hub").configureLogging(LogLevel.Information).build()
+    return new HubConnectionBuilder().withUrl(`${this.url}:${this.port}/${this.hubRouteName}`).configureLogging(LogLevel.Information).build()
   }
 }

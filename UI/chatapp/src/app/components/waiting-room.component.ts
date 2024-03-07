@@ -8,7 +8,7 @@ import { ClientService } from '../services/client.service';
   templateUrl: './waiting-room.component.html',
   styleUrls: ['./waiting-room.component.css']
 })
-export class WaitingRoomComponent {
+export class WaitingRoomComponent{
   form: FormGroup
   clientConnection?: HubConnection
 
@@ -46,7 +46,13 @@ export class WaitingRoomComponent {
     try {
       await this.clientConnection?.start()
       alert("Connection started!")
-      await this.clientConnection?.invoke("JoinChatRoom", this.form.controls['username'],this.form.controls['chatroom'])  
+
+      const payload = {
+        username: this.form.controls['username'].value,
+        roomtojoin: this.form.controls['chatroom'].value
+      }
+
+      await this.clientConnection?.invoke("JoinChatRoom",payload)  
     } catch (error) {
       console.log("OOPS ERROR DETECTED: ",error)
     }
