@@ -1,0 +1,10 @@
+<div class="container">
+    <h1>{{roomName}}</h1>
+    <div class="chat-container">
+        <span *ngFor="let msg of messages">{{msg}}</span>
+    </div>
+    <form class="send-message-container">
+        <input type="text" placeholder="Send a message">
+        <button type="submit"> Send </button>
+    </form>
+</div>

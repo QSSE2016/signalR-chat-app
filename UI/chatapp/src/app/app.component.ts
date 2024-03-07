@@ -11,6 +11,7 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 export class AppComponent {
   title = 'chatapp';
   clientConnection?: HubConnection
+  currentRoom: string = 'best chatroom ever' // to pass to chat-room component
 
   constructor(private client: ClientService) {}
 
@@ -41,7 +42,6 @@ export class AppComponent {
   private async startConnection(form: FormGroup) {
     try {
       await this.clientConnection?.start()
-      alert("Connection started!")
 
       const payload = {
         username: form.controls['username'].value,

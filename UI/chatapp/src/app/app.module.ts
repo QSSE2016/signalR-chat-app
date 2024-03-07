@@ -5,11 +5,13 @@ import { ReactiveFormsModule } from '@angular/forms';
 
 import { AppComponent } from './app.component';
 import { WaitingRoomComponent } from './components/waiting-room.component';
+import { ChatRoomComponent } from './components/chat-room.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    WaitingRoomComponent
+    WaitingRoomComponent,
+    ChatRoomComponent
   ],
   imports: [
     BrowserModule,

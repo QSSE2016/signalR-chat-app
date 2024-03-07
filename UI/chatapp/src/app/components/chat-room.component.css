@@ -1,0 +1,71 @@
+:host {
+    --main-color: 100deg,50%,50%;
+}
+
+.container {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    align-items: center;
+}
+
+h1 {
+    font-size: 3rem;
+    color: white;
+    text-shadow: 0 0 5px hsl(var(--main-color));
+}
+
+.chat-container {
+
+    color: white;
+    font-size: 1.1rem;
+    background-color: hsla(var(--main-color),.05);
+    padding: 1em;
+    display: flex;
+    flex-direction: column;
+    gap: .5rem;
+    width: max(50%,450px);
+    max-height: 300px;
+    overflow-y: auto;
+    box-shadow: 0 0 2px 0 hsl(var(--main-color));
+}
+
+.chat-container > span {
+    border: 1px solid hsl(var(--main-color));
+    padding: .5em;
+}
+
+.chat-container > span:hover {
+    background-color: hsla(var(--main-color),.3);
+}
+
+.send-message-container {
+    display: flex;
+    width: max(50%,450px);
+    gap: 1rem;
+}
+
+.send-message-container > input {
+    width: 100%;
+    padding: .5em .7em;
+    background-color: hsla(var(--main-color),.05);
+    border: 1px solid hsl(var(--main-color));
+    color: white;
+}
+
+.send-message-container > input:focus {
+    outline: none;
+}
+
+.send-message-container > button {
+    border: none;
+    background-color: hsla(var(--main-color),.05);
+    border: 1px solid hsl(var(--main-color));
+    color: white;
+    padding: 1em 2em;
+}
+
+.send-message-container > button:hover {
+    background-color: hsla(var(--main-color),.3);
+    cursor: pointer;
+}
