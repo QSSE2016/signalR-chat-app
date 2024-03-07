@@ -1,10 +1,11 @@
 ﻿using Microsoft.AspNetCore.SignalR;
 using SignalRChatAPI.Data;
+using SignalRChatAPI.Hubs.Interface;
 using SignalRChatAPI.Models;
 
 namespace SignalRChatAPI.Hubs
 {
-    public class ChatHub : Hub
+    public class ChatHub : Hub<IChatClient>
     {
         private readonly SharedDb sharedDb;
 
@@ -21,7 +22,7 @@ namespace SignalRChatAPI.Hubs
 
             sharedDb.connections[Context.ConnectionId] = conn; // update db
 
-            await Clients.Group(conn.RoomToJoin).SendAsync("ReceiveMessage","admin",$"{conn.Username} has joined {conn.RoomToJoin}");
+            await Clients.Group(conn.RoomToJoin).ReceiveMessage("ADMIN",$"{conn.Username} has joined {conn.RoomToJoin}");
         }
 
         // Function for a user to send a message to the group he is connected to. (notice that i use a different method name)
@@ -29,7 +30,7 @@ namespace SignalRChatAPI.Hubs
         {
             if(sharedDb.connections.TryGetValue(Context.ConnectionId, out var conn))
             {
-                await Clients.Group(conn.RoomToJoin).SendAsync("ReceiveGeneralMessage", conn.Username, message);
+                await Clients.Group(conn.RoomToJoin).ReceiveMessage(conn.Username, message);
             }
         }
     }

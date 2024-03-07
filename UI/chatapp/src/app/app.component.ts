@@ -37,13 +37,9 @@ export class AppComponent {
     this.clientConnection = this.client.buildConnection()
     
     // Setup a client-side handler for incoming messages sent from the server. (specifically messages with the name/method "ReceiveMessage")
+    // In this case, i don't need another handler for user sent messages (since i wan't the exact same thing to happen)
     this.clientConnection.on("ReceiveMessage",(username,msg) => {
       this.roomChat.push(`${username}: ${msg}`) // update current room chat to reflect changes
-    })
-
-    // For messages sent by users
-    this.clientConnection.on("ReceiveGeneralMessage",async (username,msg) => {
-      this.roomChat.push(`${username}: ${msg}`) // in this case they are both the same (the "on" handlers)
     })
   }
   private async startConnection(form: FormGroup) {
