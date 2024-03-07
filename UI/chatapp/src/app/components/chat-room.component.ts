@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 
 @Component({
@@ -8,7 +8,8 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 })
 export class ChatRoomComponent {
   @Input() roomName: string = ''
-  messages: Array<string> = [] // this isn't actually what's going to be presented, just here as placeholder
+  @Input() messagesInRoom: Array<string> = []
+  @Output() sendMessageEvent = new EventEmitter<string>()
   sendMessageForm: FormGroup
   
   constructor() { this.sendMessageForm = new FormGroup({message: new FormControl('',Validators.required)})}
@@ -18,6 +19,7 @@ export class ChatRoomComponent {
     if(this.sendMessageForm.invalid)
       return
 
-    console.log("Sending message")
+    this.sendMessageEvent.emit(this.sendMessageForm.controls['message'].value)
+    this.sendMessageForm.controls['message'].setValue('')
   }
 }

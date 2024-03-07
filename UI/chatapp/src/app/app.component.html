@@ -1,2 +1,2 @@
 <app-waiting-room (submitEvent)="connectToRoom($event)" *ngIf="!clientConnection"></app-waiting-room>
-<app-chat-room *ngIf="clientConnection" [roomName]="currentRoom"></app-chat-room>
+<app-chat-room *ngIf="clientConnection" [roomName]="currentRoom" (sendMessageEvent)="sendMessageToRoom($event)" [messagesInRoom]="roomChat"></app-chat-room>

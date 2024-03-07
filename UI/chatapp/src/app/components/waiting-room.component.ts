@@ -1,6 +1,5 @@
 import { Component, EventEmitter, Output } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
-import { ClientService } from '../services/client.service';
 
 @Component({
   selector: 'app-waiting-room',
