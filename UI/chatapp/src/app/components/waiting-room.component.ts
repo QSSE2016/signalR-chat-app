@@ -40,6 +40,12 @@ export class WaitingRoomComponent{
       console.log("username: ", username)
       console.log("msg: ",msg)
     })
+
+    // For messages sent
+    this.clientConnection.on("ReceiveGeneralMessage",(username,msg) => {
+       console.log("USERNAME: ",username)
+       console.log("MSG: ",msg)
+    })
   }
 
   async startConnection() {

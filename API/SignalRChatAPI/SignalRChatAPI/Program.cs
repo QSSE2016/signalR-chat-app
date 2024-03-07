@@ -1,3 +1,4 @@
+using SignalRChatAPI.Data;
 using SignalRChatAPI.Hubs;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -16,6 +17,9 @@ builder.Services.AddCors(options =>
 
 // SignalR config
 builder.Services.AddSignalR();
+
+// Add the SharedDb Service to keep track of the connections. Singleton here since a. this is shared between components and b. there's no need to re-instantiate it every http request
+builder.Services.AddSingleton<SharedDb>();
 
 var app = builder.Build();
 
