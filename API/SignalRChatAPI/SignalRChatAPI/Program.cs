@@ -1,3 +1,5 @@
+using SignalRChatAPI.Hubs;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
@@ -17,6 +19,8 @@ if (app.Environment.IsDevelopment())
 }
 
 app.UseHttpsRedirection();
+
+app.MapHub<ChatHub>("chat-hub");
 
 app.Run();
 
